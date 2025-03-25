@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HALO ARCHITECT | Sustainable Modern Architecture</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --light: #f9f9f9;
+            --text: #333333;
+            --text-light: #777777;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--primary);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--highlight);
+        }
+        
+        nav ul li a.active {
+            color: var(--highlight);
+        }
+        
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--highlight);
+            bottom: -5px;
+            left: 0;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--highlight);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: var(--highlight);
+        }
+        
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--highlight);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            background-color: #ff2d4d;
+            transform: translateY(-3px);
+        }
+        
+        .secondary-btn {
+            background-color: transparent;
+            border: 2px solid var(--highlight);
+            color: var(--highlight);
+        }
+        
+        .secondary-btn:hover {
+            background-color: var(--highlight);
+            color: white;
+        }
+        
+        .section {
+            padding: 100px 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: var(--highlight);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .parallax-section {
+            height: 60vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+        
+        .team-preview-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .team-preview-content p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--highlight);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 30px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-card p {
+            color: var(--text-light);
+        }
+        
+        .center-btn {
+            text-align: center;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 80px 5%;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .cta-content p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 5% 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--highlight);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--highlight);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: opacity 0.3s, color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--highlight);
+        }
+        
+        .contact-info li {
+            list-style: none;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--highlight);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 5%;
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            HALO<br>
+            <span>ARCHITECT</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Designing Sustainable Futures</h1>
+            <p>Innovative architecture that harmonizes with nature and elevates human experience</p>
+            <a href="portfolio.html" class="btn">Explore Our Work</a>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="section-title">
+            <h2>Our Vision</h2>
+            <p>At HALO ARCHITECT, we believe in creating spaces that inspire, function flawlessly, and stand the test of time</p>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p>Our approach combines innovative design thinking with sustainable practices to deliver architecture that makes a positive impact on people and the planet. We create buildings that are not just structures, but experiences that elevate everyday life while respecting the environment.</p>
+                <p>With over 15 years of experience, our team has developed a unique methodology that blends aesthetic excellence with technical precision and environmental responsibility.</p>
+                <a href="about.html" class="btn secondary-btn">Learn More</a>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-text">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">120+</span>
+                    <span class="stat-text">Projects Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-text">Design Awards</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="parallax-section">
+        <div class="parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+        <div class="container">
+            <div class="team-preview-content">
+                <h2>Meet Our Team</h2>
+                <p>Our diverse team of architects, designers, and visionaries brings together decades of experience and a passion for innovative, sustainable design. Each member contributes unique expertise while sharing our core values of excellence, sustainability, and client-focused design.</p>
+                <a href="about.html" class="btn">Meet The Team</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Comprehensive architectural solutions tailored to your unique needs</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3>Residential Design</h3>
+                <p>Custom homes that reflect your lifestyle and values, designed with sustainability and comfort in mind.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3>Commercial Architecture</h3>
+                <p>Innovative workspaces that enhance productivity, brand identity, and employee wellbeing.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Sustainable Design</h3>
+                <p>Eco-friendly solutions that minimize environmental impact while maximizing energy efficiency.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <h3>3D Visualization</h3>
+                <p>Immersive 3D models and virtual tours to help you envision your project before construction begins.</p>
+            </div>
+        </div>
+        
+        <div class="center-btn">
+            <a href="services.html" class="btn">Explore Services</a>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Transform Your Space?</h2>
+            <p>Let's collaborate to bring your architectural vision to life with our expert team and innovative approach.</p>
+            <a href="contact.html" class="btn">Get in Touch</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About HALO</h3>
+                <p>We are a premier architecture firm dedicated to creating innovative, sustainable, and beautiful spaces that inspire.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html">Architectural Design</a></li>
+                    <li><a href="services.html">Interior Design</a></li>
+                    <li><a href="services.html">Sustainable Design</a></li>
+                    <li><a href="services.html">Project Management</a></li>
+                    <li><a href="services.html">3D Visualization</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Architect Avenue, Design District, Cityville 10001</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>info@haloarchitect.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 HALO ARCHITECT. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for elements when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.stat-item, .service-card');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Set initial state for animated elements
+            const animatedElements = document.querySelectorAll('.stat-item, .service-card');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
+        });
+    </script>
+</body>
+</html>
