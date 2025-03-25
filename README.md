@@ -17,16 +17,6 @@ HALO Architect is a modern and interactive website designed for an architectural
 - **JavaScript** (Dark mode toggle, interactive elements)
 - **FontAwesome & Google Fonts** (Icons and Typography)
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/halo-architect.git
-   ```
-2. Navigate to the project folder:
-   ```bash
-   cd halo-architect
-   ```
-3. Open `index.html` in your browser.
 
 ## Folder Structure
 ```
@@ -64,5 +54,5 @@ This project is open-source and available under the [MIT License](LICENSE).
 
 ## Contact
 For inquiries or contributions, reach out at:
-📧 Email: info@haloarchitect.com
+📧 Email: bhuyanmanushri@gmail.com
 
